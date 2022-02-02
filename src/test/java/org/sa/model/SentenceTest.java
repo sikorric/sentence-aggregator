@@ -7,6 +7,10 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class SentenceTest {
+    @Test
+    void shouldSplitWordsDelimitedWithComma() {
+        assertArrayEquals(List.of("a", "b").toArray(), new Sentence("a, b").words());
+    }
 
     @Test
     void shouldSortSentenceWordsIgnoreCase() {
