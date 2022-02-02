@@ -2,8 +2,12 @@ plugins {
     id 'java'
 }
 
-group 'org.example'
+group 'org.sa'
 version '1.0-SNAPSHOT'
+
+ext {
+    mainClassName = 'org.sa.SentenceAggregator'
+}
 
 repositories {
     mavenCentral()
@@ -16,4 +20,11 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+
+jar {
+    manifest {
+        attributes 'Main-Class': mainClassName
+    }
 }
