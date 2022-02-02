@@ -1,6 +1,5 @@
-package org.sa;
+package org.sa.io;
 
-import java.io.Closeable;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
@@ -10,7 +9,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
-public class SentenceScanner implements AutoCloseable {
+public final class SentenceScanner implements AutoCloseable {
     private static final Pattern SENTENCE_DELIMITER = Pattern.compile("(?<!Mr|Ms|Mrs)[.!?]");
     private final Scanner scanner;
 

@@ -1,6 +1,7 @@
-package org.sa;
+package org.sa.io;
 
 import org.junit.jupiter.api.Test;
+import org.sa.io.SentenceScanner;
 
 import java.io.ByteArrayInputStream;
 import java.io.FileInputStream;
@@ -35,6 +36,11 @@ class SentenceScannerTest {
     void shouldScanSampleFile() throws FileNotFoundException {
         final var scanner = new SentenceScanner(new FileInputStream(Path.of("src/test/resources/sample-files/small.in").toFile()));
         assertEquals(13, scanner.stream().count());
+    }
+
+    @Test
+    void shouldFailOnNullInputStream() {
+        assertThrows(NullPointerException.class, () -> new SentenceScanner(null));
     }
 
     private static SentenceScanner scannerFor(String text) {
