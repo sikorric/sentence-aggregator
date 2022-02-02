@@ -1,6 +1,8 @@
 package org.sa.model;
 
+import java.text.Collator;
 import java.util.Arrays;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.function.Predicate;
 
@@ -13,7 +15,7 @@ public final class Sentence {
                 .map(word -> word.replaceAll("[():-]", ""))
                 .map(String::trim)
                 .filter(Predicate.not(String::isEmpty))
-                .sorted(String::compareToIgnoreCase)
+                .sorted(Collator.getInstance(Locale.ENGLISH))
                 .toArray(String[]::new);
     }
 

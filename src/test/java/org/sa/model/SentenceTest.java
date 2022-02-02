@@ -14,7 +14,7 @@ class SentenceTest {
 
     @Test
     void shouldSortSentenceWordsIgnoreCase() {
-        assertArrayEquals(List.of("a", "A", "B", "b").toArray(), new Sentence("a B A b").words());
+        assertArrayEquals(List.of("a", "A", "b", "B").toArray(), new Sentence("a B A b").words());
     }
 
     @Test
