@@ -10,12 +10,12 @@ public class XmlSentenceWriter implements SentenceWriter {
 
     @Override
     public void write(Sentence sentence) {
-        System.out.print("  <sentence>");
+        System.out.print("<sentence>");
         for (String word : sentence.words()) {
             // TODO sanitize string for xml if needed
-            System.out.print("    <word>" + word + "</word>");
+            System.out.print("<word>" + word + "</word>");
         }
-        System.out.println("  </sentence>");
+        System.out.println("</sentence>");
     }
 
     @Override
