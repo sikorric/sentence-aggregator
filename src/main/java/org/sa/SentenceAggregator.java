@@ -18,8 +18,8 @@ public class SentenceAggregator {
             System.exit(1);
         }
         try (SentenceWriter writer = "--xml".equals(args[0])
-                ? new XmlSentenceWriter()
-                : new CsvSentenceWriter()) {
+                ? new XmlSentenceWriter(System.out)
+                : new CsvSentenceWriter(System.out)) {
 
             new SentenceScanner(System.in).stream()
                     .map(Sentence::new)

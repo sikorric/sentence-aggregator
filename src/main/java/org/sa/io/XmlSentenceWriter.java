@@ -2,24 +2,31 @@ package org.sa.io;
 
 import org.sa.model.Sentence;
 
+import java.io.BufferedOutputStream;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+
 public class XmlSentenceWriter implements SentenceWriter {
-    public XmlSentenceWriter() {
-        System.out.println("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>");
-        System.out.println("<text>");
+    private final PrintWriter writer;
+
+    public XmlSentenceWriter(OutputStream output) {
+        writer = new PrintWriter(new BufferedOutputStream(output));
+        writer.println("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>");
+        writer.println("<text>");
     }
 
     @Override
     public void write(Sentence sentence) {
-        System.out.print("<sentence>");
+        writer.print("<sentence>");
         for (String word : sentence.words()) {
             // TODO sanitize string for xml if needed
-            System.out.print("<word>" + word + "</word>");
+            writer.print("<word>" + word + "</word>");
         }
-        System.out.println("</sentence>");
+        writer.println("</sentence>");
     }
 
     @Override
     public void close() throws Exception {
-        System.out.println("</text>");
+        writer.println("</text>");
     }
 }
