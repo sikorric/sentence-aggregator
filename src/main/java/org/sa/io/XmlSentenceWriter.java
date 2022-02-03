@@ -5,12 +5,13 @@ import org.sa.model.Sentence;
 import java.io.BufferedOutputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.nio.charset.StandardCharsets;
 
 public class XmlSentenceWriter implements SentenceWriter {
     private final PrintWriter writer;
 
     public XmlSentenceWriter(OutputStream output) {
-        writer = new PrintWriter(new BufferedOutputStream(output));
+        writer = new PrintWriter(new BufferedOutputStream(output), true, StandardCharsets.UTF_8);
         writer.println("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>");
         writer.println("<text>");
     }
@@ -26,7 +27,7 @@ public class XmlSentenceWriter implements SentenceWriter {
     }
 
     @Override
-    public void close() throws Exception {
+    public void close() {
         writer.println("</text>");
         writer.close();
     }
