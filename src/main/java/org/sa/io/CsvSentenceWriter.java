@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 
 /**
- * A CSV Sentence writer. Serialize sentences to CSV data format.
+ * CSV Sentence writer. Serialize sentences to CSV data format.
  *
  * UTF-8 encoding of the output text is assumed.
  */

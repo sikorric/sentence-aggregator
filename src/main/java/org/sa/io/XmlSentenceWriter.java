@@ -7,8 +7,10 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 
+import static com.google.common.xml.XmlEscapers.xmlContentEscaper;
+
 /**
- * A XML Sentence writer. Serialize sentences to XML data format.
+ * XML Sentence writer. Serialize sentences to XML data format.
  *
  * UTF-8 encoding of the output text is assumed.
  */
@@ -25,8 +27,7 @@ public class XmlSentenceWriter implements SentenceWriter {
     public void write(Sentence sentence) {
         writer.print("<sentence>");
         for (String word : sentence.words()) {
-            // TODO sanitize string for xml if needed
-            writer.print("<word>" + word + "</word>");
+            writer.print("<word>" + xmlContentEscaper().escape(word) + "</word>");
         }
         writer.println("</sentence>");
     }

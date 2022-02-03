@@ -7,10 +7,10 @@ A sentence is a list of alphabetically ordered words.
 Clone the repository and run the following command in the project's folder.
 
 ```shell
-./gradlew build
+./gradlew
 
 # test (java 17 is required)
-java -jar build/libs/sentence-aggregator-1.0-SNAPSHOT.jar --xml < src/test/resources/sample-files/small.in
+java -jar build/libs/sentence-aggregator-1.0-SNAPSHOT-all.jar --xml < src/test/resources/sample-files/small.in
 ```
 
 ## Usage
