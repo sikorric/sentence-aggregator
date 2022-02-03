@@ -1,7 +1,6 @@
 package org.sa.io;
 
 import org.junit.jupiter.api.Test;
-import org.sa.io.SentenceScanner;
 
 import java.io.ByteArrayInputStream;
 import java.io.FileInputStream;
@@ -46,6 +45,7 @@ class SentenceScannerTest {
     private static SentenceScanner scannerFor(String text) {
         return new SentenceScanner(new ByteArrayInputStream(text.getBytes(StandardCharsets.UTF_8)));
     }
+
     private static List<String> listOf(SentenceScanner scanner) {
         return scanner.stream().collect(Collectors.toList());
     }

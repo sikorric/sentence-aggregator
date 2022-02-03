@@ -3,7 +3,10 @@ package org.sa.io;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
-import java.util.*;
+import java.util.Objects;
+import java.util.Scanner;
+import java.util.Spliterator;
+import java.util.Spliterators;
 import java.util.function.Predicate;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
@@ -19,7 +22,7 @@ public final class SentenceScanner implements AutoCloseable {
     }
 
     @Override
-    public void close() throws IOException {
+    public void close() {
         scanner.close();
     }
 
