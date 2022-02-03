@@ -1,10 +1,44 @@
-# Java Coding Assignment
+# Sentence Aggregator
+The Sentence Aggregator parses given text into sentences.
+Sentences are written downstream as CSV or XML data. 
+A sentence is a list of alphabetically ordered words.
+
+## Build
+Clone the repository and run the following command in the project's folder.
+
+```shell
+./gradlew build
+
+# test (java 17 is required)
+java -jar build/libs/sentence-aggregator-1.0-SNAPSHOT.jar --xml < src/test/resources/sample-files/small.in
+```
+
+## Usage
+The application requires Java 17 to be installed on the target system.
+
+```
+usage: java -jar sentence-aggregator.jar --csv|--xml                
+                                                                    
+The application reads sentences delimited by [.?!] from the standard
+input and writes ordered sentence words to the standard output.
+
+Options:
+  --xml  write output in XML format
+  --csv  write output in CSV format
+
+```
+
+## Java Coding Assignment
+
 The following is a small coding exercise. You have to provide a working Java program that fulfils a number of requirements. The assessment of your answer will be based on fulfilment of functionality requirements and the quality of the implementation.
-## Hand-in
+
+### Hand-in
 The result of the assignment can be supplied as a zipped project sources.
-## Set up
+
+### Set up
 Your solution must be written in Java version at least 1.7. Your application must be able to read from standard input and write onto standard output. Feel free to present your ability to use common tools, libs or frameworks (wiring, testing, logging, and building).
-## Functionality
+
+### Functionality
 The basic requirement is to provide a program that can convert text into either XML formatted data or comma separated (CSV) data. The text is to be parsed, broken into sentences and words and the words have to be sorted.
 
 Create a domain model class Sentence.java, which will be used as a key in a Map.
