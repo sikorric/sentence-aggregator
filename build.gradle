@@ -2,13 +2,18 @@ plugins {
     id 'java'
 }
 
-group 'org.sa'
-version '1.0-SNAPSHOT'
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of('17')
+    }
+}
+
+group = 'org.sa'
+version = '1.0-SNAPSHOT'
 
 ext {
     mainClassName = 'org.sa.SentenceAggregator'
 }
-
 repositories {
     mavenCentral()
 }
@@ -22,9 +27,19 @@ test {
     useJUnitPlatform()
 }
 
+tasks.register('uberJar', Jar) {
+    archiveClassifier = 'uber'
+
+    from sourceSets.main.output
+
+    dependsOn configurations.runtimeClassPath
+    from {
+        configurations.runtimeClassPath.findAll {it.name.endsWith('jar') }.collect { zipTree(it) }
+    }
+}
 
 jar {
     manifest {
-        attributes 'Main-Class': mainClassName
+        attributes('Main-Class': mainClassName)
     }
 }
