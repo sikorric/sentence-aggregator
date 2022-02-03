@@ -8,8 +8,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class SentenceTest {
     @Test
+    void shouldDropPunctuation() {
+        assertArrayEquals(List.of("a", "b", "c").toArray(), new Sentence("(a) b: -c").words());
+    }
+
+    @Test
     void shouldSplitWordsDelimitedWithComma() {
-        assertArrayEquals(List.of("a", "b").toArray(), new Sentence("a, b").words());
+        assertArrayEquals(List.of("a", "b").toArray(), new Sentence("a,b").words());
     }
 
     @Test

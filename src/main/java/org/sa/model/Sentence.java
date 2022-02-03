@@ -9,9 +9,9 @@ import java.util.function.Predicate;
 public final class Sentence {
     private final String[] words;
 
-    public Sentence(final String sentence) {
+    public Sentence(String sentence) {
         Objects.requireNonNull(sentence, "sentence can not be null");
-        words =  Arrays.stream(sentence.split("(\\s+|,)"))
+        words = Arrays.stream(sentence.split("(\\s+|,)"))
                 .map(word -> word.replaceAll("[():-]", ""))
                 .map(String::trim)
                 .filter(Predicate.not(String::isEmpty))
