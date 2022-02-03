@@ -16,6 +16,18 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class SentenceAggregatorTest {
+    @Test
+    void shouldEscapeSpecialCharactersInXmlOutput() throws Exception {
+        final var xml = new ByteArrayOutputStream();
+        aggregateSentences("a<", new XmlSentenceWriter(xml));
+        assertEquals("""
+                        <?xml version="1.0" encoding="UTF-8"?>
+                        <text>
+                        <sentence><word>a&lt;</word></sentence>
+                        </text>""",
+                xml.toString(StandardCharsets.UTF_8)
+        );
+    }
 
     @Test
     void shouldWriteSentencesToCsv() throws Exception {
@@ -40,13 +52,12 @@ class SentenceAggregatorTest {
                 Mary had a little lamb. Peter called for the wolf, and Aesop came.
                 Cinderella likes shoes.""", new XmlSentenceWriter(xmlSentences));
         assertEquals("""
-                        <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+                        <?xml version="1.0" encoding="UTF-8"?>
                         <text>
                         <sentence><word>a</word><word>had</word><word>lamb</word><word>little</word><word>Mary</word></sentence>
                         <sentence><word>Aesop</word><word>and</word><word>called</word><word>came</word><word>for</word><word>Peter</word><word>the</word><word>wolf</word></sentence>
                         <sentence><word>Cinderella</word><word>likes</word><word>shoes</word></sentence>
-                        </text>
-                        """.replaceAll("\n", "\r\n"),
+                        </text>""",
                 xmlSentences.toString(StandardCharsets.UTF_8)
         );
     }
@@ -87,7 +98,7 @@ class SentenceAggregatorTest {
         }
 
         @Override
-        public void close() throws Exception {
+        public void close() {
         }
 
         public List<Sentence> sentences() {
