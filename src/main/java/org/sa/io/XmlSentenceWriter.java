@@ -28,5 +28,6 @@ public class XmlSentenceWriter implements SentenceWriter {
     @Override
     public void close() throws Exception {
         writer.println("</text>");
+        writer.close();
     }
 }
