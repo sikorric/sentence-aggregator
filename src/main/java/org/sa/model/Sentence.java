@@ -6,6 +6,17 @@ import java.util.Locale;
 import java.util.Objects;
 import java.util.function.Predicate;
 
+/**
+ * A sentence model, it is defined by list of alphabetically ordered words
+ * a sentence contains.
+ *
+ * The sentence words are parsed from the sentence string. Whitespace and comma
+ * are used as word separators. Punctuation is also stripped from the words before
+ * ordering.
+ *
+ * The class is immutable.
+ * The class can be used as a map key.
+ */
 public final class Sentence {
     private final String[] words;
 

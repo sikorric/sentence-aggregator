@@ -7,6 +7,11 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 
+/**
+ * A CSV Sentence writer. Serialize sentences to CSV data format.
+ *
+ * UTF-8 encoding of the output text is assumed.
+ */
 public class CsvSentenceWriter implements SentenceWriter {
     private final PrintWriter writer;
     private long counter = 0;

@@ -7,6 +7,11 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 
+/**
+ * A XML Sentence writer. Serialize sentences to XML data format.
+ *
+ * UTF-8 encoding of the output text is assumed.
+ */
 public class XmlSentenceWriter implements SentenceWriter {
     private final PrintWriter writer;
 
