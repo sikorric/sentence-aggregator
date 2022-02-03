@@ -4,9 +4,10 @@ Sentences are written downstream as CSV or XML data.
 A sentence is a list of alphabetically ordered words.
 
 ## Build
-Clone the repository and run the following command in the project's folder.
+Clone the repository and run the following commands in the project's folder.
 
 ```shell
+chmod u+x ./gradlew
 ./gradlew
 
 # test (java 17 is required)
